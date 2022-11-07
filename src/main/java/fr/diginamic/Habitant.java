@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -38,6 +39,9 @@ public class Habitant {
 	@ManyToMany
 	@JoinTable(name = "HABITANT_VILLE" , joinColumns = @JoinColumn(name = "ID_HABITANT", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "ID_VILLE", referencedColumnName = "ID"))
 	private List<Ville> villes = new ArrayList<Ville>();
+	
+	@Embedded
+	private Adresse adresse;
 
 	/**Constructeur
 	 * 
@@ -50,9 +54,10 @@ public class Habitant {
 	 * @param prenom
 	 * @param villes
 	 */
-	public Habitant(String nom, String prenom) {
+	public Habitant(String nom, String prenom, Adresse adresse) {
 		this.nom = nom;
 		this.prenom = prenom;
+		this.adresse = adresse;
 	}
 
 	/**Getter pour l'attribut id
@@ -110,6 +115,13 @@ public class Habitant {
 	public void setVilles(List<Ville> villes) {
 		this.villes = villes;
 	}
+
+	@Override
+	public String toString() {
+		return "Habitant [id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", villes=" + villes + ", adresse="
+				+ adresse + "]";
+	}
+	
 	
 
 }

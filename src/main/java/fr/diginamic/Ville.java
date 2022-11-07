@@ -145,4 +145,13 @@ public class Ville {
 		this.categorie = categorie;
 	}
 
+	@Override
+	public String toString() {
+		return "Ville [region=" + region + ", id=" + id + ", nom=" + nom + ", codePostal=" + codePostal
+				+ ", dateDernierRecensement=" + dateDernierRecensement + ", categorie=" + categorie + ", habitants="
+				+ habitants + "]";
+	}
+	
+	
+
 }

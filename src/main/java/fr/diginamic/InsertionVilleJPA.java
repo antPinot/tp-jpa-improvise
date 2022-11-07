@@ -42,7 +42,7 @@ public class InsertionVilleJPA {
 		
 		Ville glasgow = new Ville("Glasgow", 99000, new Date(), Categorie.GRANDE, bretagne);
 		
-		Habitant xav = new Habitant("Dupont de Ligonnes", "Xavier");
+		Habitant xav = new Habitant("Dupont de Ligonnes", "Xavier", new Adresse(35, "Avenue de la Terrasse"));
 		
 		xav.getVilles().add(nantes);
 		
@@ -69,6 +69,10 @@ public class InsertionVilleJPA {
 		em.persist(xav);
 		
 		transaction.commit();
+		
+		Habitant habitant = em.find(Habitant.class, 1);
+		
+		System.out.println(habitant);
 
 	}
 
